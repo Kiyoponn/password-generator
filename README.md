@@ -23,12 +23,12 @@ Desing is taken from frontendmentor's [password generator app](https://www.front
 /
 ├───public/
 │   └── favicon.svg
-└───src/
-│   └───styles/
+├───src/
+│   ├───styles/
 │   │   └── index.css
-│   └── App.tsx
+│   ├── App.tsx
 │   └── main.tsx
-└── index.html
+├─── index.html
 └── package.json
 ```
 
