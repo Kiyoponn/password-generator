@@ -21,14 +21,14 @@ Desing is taken from frontendmentor's [password generator app](https://www.front
 
 ```tree
 /
-├───public/
+├── public/
 │   └── favicon.svg
-├───src/
-│   ├───styles/
+├── src/
+│   ├── styles/
 │   │   └── index.css
 │   ├── App.tsx
 │   └── main.tsx
-├─── index.html
+├── index.html
 └── package.json
 ```
 
