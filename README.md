@@ -12,6 +12,8 @@ A simple and fully responsive password generator app using:
   - React Toastify allows you to add notifications to your app with ease.
 - [react-icons](https://react-icons.github.io/react-icons)
   - Include popular icons in your React projects easily.
+- [redix-ui](https://www.radix-ui.com/)
+  - An open-source UI component library for building high-quality, accessible design systems and web apps.
 
 ## 🎨 Design
 
