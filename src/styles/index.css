@@ -4,50 +4,55 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='range'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  height: 0.5rem;
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: full;
+}
+.SliderRoot[data-orientation='horizontal'] {
+  height: 20px;
+}
+.SliderRoot[data-orientation='vertical'] {
+  flex-direction: column;
+  width: 20px;
+  height: 100px;
 }
 
-input[type='range']::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-  cursor: pointer;
+.SliderTrack {
   background-color: #15141c;
+  position: relative;
+  flex-grow: 1;
 }
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #0090cc;
-  border: 2px solid #0090cc;
-  border-radius: 50%;
-  cursor: pointer;
+.SliderTrack[data-orientation='horizontal'] {
+  height: 8px;
 }
-input[type='range']:active::-webkit-slider-thumb {
-  background: #15141c;
+.SliderTrack[data-orientation='vertical'] {
+  width: 8px;
 }
 
-input[type='range']::-moz-range-thumb {
-  -moz-appearance: none;
-  width: 20px;
-  height: 20px;
-  @apply bg-gray-50 border-2 border-gray-50;
-  border-radius: 50%;
-  cursor: pointer;
-}
-input[type='range']:active::-moz-range-thumb {
-  background: #15141c;
-  border: 2px solid #0090cc;
-}
-input[type='range']::-moz-range-track {
-  -moz-appearance: none;
-  height: 0.5rem;
-  cursor: pointer;
-  background-color: #15141c;
-}
-input[type='range']::-moz-range-progress {
-  height: 0.5rem;
+.SliderRange {
+  position: absolute;
   background-color: #0090cc;
+  height: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.SliderThumb:hover {
+  background-color: #15141c;
+  border-color: #0090cc;
+}
+.SliderThumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 144, 204, 0.5);
 }

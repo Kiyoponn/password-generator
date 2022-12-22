@@ -1,3 +1,4 @@
+import * as Slider from '@radix-ui/react-slider'
 import React, { useEffect, useState } from 'react'
 import { FiArrowRight, FiCopy } from 'react-icons/fi'
 import { toast, ToastContainer } from 'react-toastify'
@@ -98,17 +99,21 @@ function App() {
                   try with at least 8 characters
                 </em>
               )}
-              <input
-                type='range'
-                min={1}
+              <Slider.Root
+                className='SliderRoot'
                 max={20}
                 step={1}
-                defaultValue={length}
-                onChange={(e) => setLength(parseInt(e.target.value))}
-                name='characters'
-                id='characters'
-                className='focus:outline focus:outline-accent w-full appearance-none active:outline-none'
-              />
+                aria-label='Volume'
+                defaultValue={[length]}
+                onValueChange={(value) => {
+                  setLength(value[0])
+                }}
+              >
+                <Slider.Track className='SliderTrack'>
+                  <Slider.Range className='SliderRange' />
+                </Slider.Track>
+                <Slider.Thumb className='SliderThumb' />
+              </Slider.Root>
             </div>
             <div className='flex flex-col gap-4 mb-10'>
               {PasswordOptions.map((option, index) => {
