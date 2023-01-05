@@ -160,7 +160,7 @@ function App() {
                       ? colors.red
                       : colors.yellow
                   }`}
-                ></div>
+                />
                 <div
                   className={`border h-8 w-3 ${
                     strength === 4
@@ -169,7 +169,7 @@ function App() {
                       ? colors.none
                       : colors.yellow
                   }`}
-                ></div>
+                />
                 <div
                   className={`border h-8 w-3 ${
                     strength === 4
@@ -178,12 +178,12 @@ function App() {
                       ? colors.yellow
                       : colors.none
                   }`}
-                ></div>
+                />
                 <div
                   className={`border h-8 w-3 ${
                     strength === 4 ? colors.green : colors.none
                   }`}
-                ></div>
+                />
               </div>
             </div>
             <div>
