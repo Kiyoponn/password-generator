@@ -17,7 +17,7 @@ A simple and fully responsive password generator app using:
 
 ## 🎨 Design
 
-Desing is taken from frontendmentor's [password generator app](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
+Desing source frontendmentor's [password generator app](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
 
 ## 📁 Folder Structure
 
