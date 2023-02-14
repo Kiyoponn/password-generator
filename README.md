@@ -17,7 +17,7 @@ A simple and fully responsive password generator app using:
 
 ## 🎨 Design
 
-Desing source frontendmentor's [password generator app](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
+Source: frontendmentor's [password generator app](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
 
 ## 📁 Folder Structure
 
@@ -54,7 +54,7 @@ Install dependencies
   yarn
 ```
 
-Start the server
+Start dev server
 
 ```bash
   yarn dev
