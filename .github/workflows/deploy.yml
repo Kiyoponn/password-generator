@@ -6,75 +6,38 @@ on:
       - master
 
 jobs:
-  cache-and-install:
+  deploy:
     runs-on: ubuntu-latest
-
+    environment: deploy
     steps:
-      - name: Checkout
+      - name: Checkout Commit
         uses: actions/checkout@v3
-
-      - name: Install Node.js
+        with:
+          fetch-depth: 0
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
+          node-version: '16'
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@next-7
       - name: Install dependencies
         run: pnpm install
-
-  build:
-    name: Build
-    needs: cache-and-install
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Build project
-        run: pnpm build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
+      - name: Update pnpm bundle
+        run: curl -L --fail https://get.pnpm.io/v5.js > static/pnpm.js
+      - name: Update translations
+        env:
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+        run: pnpm crowdin:sync
+      - uses: webfactory/ssh-agent@v0.7.0
         with:
-          name: production-files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+      - name: Release to GitHub Pages
+        env:
+          USE_SSH: true
+          GIT_USER: git
+          DEPLOYMENT_BRANCH: master
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "gh-actions"
+          pnpm run deploy
