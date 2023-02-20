@@ -1,5 +1,5 @@
 import * as Slider from '@radix-ui/react-slider'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FiArrowRight, FiCopy } from 'react-icons/fi'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,7 +9,7 @@ import {
   colors,
   copyToClipboard,
   generatePassword,
-  PasswordOptions
+  PasswordOptions,
 } from './utils'
 
 function App() {
@@ -23,11 +23,11 @@ function App() {
   const notify = () => {
     if (password === '' || password === null) {
       return toast.error('Please generate password to copy!', {
-        progressClassName: 'bg-red-500'
+        progressClassName: 'bg-red-500',
       })
     }
     toast.success('Password copied to clipboard!', {
-      progressClassName: 'bg-accent'
+      progressClassName: 'bg-accent',
     })
   }
 

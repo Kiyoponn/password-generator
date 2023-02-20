@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "pnpm dlx prettier --write . --ignore-path .gitignore -u"
   },
   "dependencies": {
     "@radix-ui/react-slider": "^1.1.0",

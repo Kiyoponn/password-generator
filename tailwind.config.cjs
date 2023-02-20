@@ -7,12 +7,12 @@ module.exports = {
         primary: '#15141c',
         secondary: '#08070c',
         tertiary: '#24232b',
-        accent: '#0090cc'
+        accent: '#0090cc',
       },
       fontFamily: {
-        jbmono: ['JetBrains Mono', 'monospace']
-      }
-    }
+        jbmono: ['JetBrains Mono', 'monospace'],
+      },
+    },
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/forms')],
 }

@@ -12,9 +12,11 @@
   touch-action: none;
   width: full;
 }
+
 .SliderRoot[data-orientation='horizontal'] {
   height: 20px;
 }
+
 .SliderRoot[data-orientation='vertical'] {
   flex-direction: column;
   width: 20px;
@@ -26,9 +28,11 @@
   position: relative;
   flex-grow: 1;
 }
+
 .SliderTrack[data-orientation='horizontal'] {
   height: 8px;
 }
+
 .SliderTrack[data-orientation='vertical'] {
   width: 8px;
 }
@@ -48,10 +52,12 @@
   border-radius: 100%;
   cursor: pointer;
 }
+
 .SliderThumb:hover {
   background-color: #15141c;
   border-color: #0090cc;
 }
+
 .SliderThumb:focus {
   outline: none;
   box-shadow: 0 0 0 4px rgba(0, 144, 204, 0.5);
