@@ -16,6 +16,8 @@ A simple and fully responsive password generator app using:
   - An open-source UI component library for building high-quality, accessible design systems and web apps.
 - [zustand](https://zustand-demo.pmnd.rs/)
   - Bear necessities for state management in react.
+- [github-pages](https://pages.github.com/)
+  - Websites for you and your projects.
 
 ## 🎨 Design
 
