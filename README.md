@@ -14,6 +14,8 @@ A simple and fully responsive password generator app using:
   - Include popular icons in your React projects easily.
 - [redix-ui](https://www.radix-ui.com/)
   - An open-source UI component library for building high-quality, accessible design systems and web apps.
+- [zustand](https://zustand-demo.pmnd.rs/)
+  - Bear necessities for state management in react.
 
 ## 🎨 Design
 
