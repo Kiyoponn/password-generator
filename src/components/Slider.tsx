@@ -1,9 +1,8 @@
-import * as RadixSlider from '@radix-ui/react-slider'
 import { create } from 'zustand'
+import * as RadixSlider from '@radix-ui/react-slider'
 
 type State = {
   length: number
-  setLength: (length: number) => void
 }
 
 type Action = {

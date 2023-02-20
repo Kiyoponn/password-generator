@@ -1,9 +1,8 @@
-import { PasswordOptions } from '../utils'
 import { create } from 'zustand'
+import { PasswordOptions } from '../utils'
 
 type State = {
   checked: boolean[]
-  setChecked: (checked: boolean[]) => void
 }
 
 type Action = {

@@ -1,6 +1,22 @@
+import { create } from 'zustand'
 import { colors } from '../utils'
 
-export default function PasswordStrength({ strength }: { strength: number }) {
+type Store = {
+  strength: number
+}
+
+type Action = {
+  setStrength: (strength: number) => void
+}
+
+export const useStrengthStore = create<Store & Action>((set) => ({
+  strength: 0,
+  setStrength: (strength: number) => set({ strength }),
+}))
+
+export default function PasswordStrength() {
+  const strength = useStrengthStore((state) => state.strength)
+
   return (
     <div className='bg-primary h-16 px-4 mb-6 flex items-center'>
       <p className='text-left uppercase text-gray-400'>Strength</p>

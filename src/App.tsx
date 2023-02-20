@@ -4,9 +4,11 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import GenerateButton from './components/Button'
-import Slider, { useLengthStore } from './components/CharacterSlider'
+import Slider, { useLengthStore } from './components/Slider'
 import Checkbox, { useCheckedStore } from './components/Checkbox'
-import PasswordStrength from './components/StrengthChecker'
+import PasswordStrength, {
+  useStrengthStore,
+} from './components/PasswordStrength'
 
 import {
   checkPasswordStrength,
@@ -16,7 +18,7 @@ import {
 
 function App() {
   const [password, setPassword] = useState('')
-  const [strength, setStrength] = useState(0)
+  const setStrength = useStrengthStore((state) => state.setStrength)
   const checkedState = useCheckedStore((state) => state.checked)
   const length = useLengthStore((state) => state.length)
 
@@ -94,7 +96,7 @@ function App() {
               <Slider />
             </div>
             <Checkbox />
-            <PasswordStrength strength={strength} />
+            <PasswordStrength />
             <GenerateButton />
           </form>
         </div>
