@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         jbmono: ['JetBrains Mono', 'monospace'],
       },
+      boxShadow: {
+        ring: '0 0 0 4px',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

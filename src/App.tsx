@@ -1,24 +1,23 @@
-import * as Slider from '@radix-ui/react-slider'
 import { useEffect, useState } from 'react'
-import { FiArrowRight, FiCopy } from 'react-icons/fi'
+import { FiCopy } from 'react-icons/fi'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import GenerateButton from './components/Button'
+import Slider, { useLengthStore } from './components/CharacterSlider'
+import Checkbox, { useCheckedStore } from './components/Checkbox'
+import PasswordStrength from './components/StrengthChecker'
 
 import {
   checkPasswordStrength,
-  colors,
   copyToClipboard,
   generatePassword,
-  PasswordOptions,
 } from './utils'
 
 function App() {
-  const [length, setLength] = useState(8)
   const [password, setPassword] = useState('')
   const [strength, setStrength] = useState(0)
-  const [checkedState, setCheckedState] = useState(
-    new Array(PasswordOptions.length).fill(false)
-  )
+  const checkedState = useCheckedStore((state) => state.checked)
+  const length = useLengthStore((state) => state.length)
 
   const notify = () => {
     if (password === '' || password === null) {
@@ -29,14 +28,6 @@ function App() {
     toast.success('Password copied to clipboard!', {
       progressClassName: 'bg-accent',
     })
-  }
-
-  const checkPasswordOptions = (position: number) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    )
-
-    setCheckedState(updatedCheckedState)
   }
 
   const getNumberOfCharacters = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -60,7 +51,7 @@ function App() {
   }, [password])
 
   return (
-    <main className='flex flex-col justify-center text-gray-50 h-full'>
+    <div className='flex flex-col justify-center text-gray-50 h-full'>
       <div className='max-w-3xl sm:w-[480px] mx-auto'>
         <h3 className='text-gray-400 mb-4 text-center'>Password Generator</h3>
         <div className='mb-4 flex justify-between items-center px-4 bg-tertiary'>
@@ -96,105 +87,14 @@ function App() {
               </div>
               {length < 8 && (
                 <em className='text-red-500 block font-light text-sm mb-4'>
-                  try with at least 8 characters
+                  try with at least 8 characters ;)
                 </em>
               )}
-              <Slider.Root
-                className='SliderRoot'
-                max={20}
-                step={1}
-                aria-label='Volume'
-                defaultValue={[length]}
-                onValueChange={(value) => {
-                  setLength(value[0])
-                }}
-              >
-                <Slider.Track className='SliderTrack'>
-                  <Slider.Range className='SliderRange' />
-                </Slider.Track>
-                <Slider.Thumb className='SliderThumb' />
-              </Slider.Root>
+              <Slider />
             </div>
-            <div className='flex flex-col gap-4 mb-10'>
-              {PasswordOptions.map((option, index) => {
-                return (
-                  <div key={index}>
-                    <input
-                      className='border-2 appearance-none bg-tertiary text-accent focus:ring-offset-0 focus:ring-opacity-50 hover:border-accent focus:ring-accent focus:ring w-5 h-5 cursor-pointer'
-                      type='checkbox'
-                      name={option}
-                      value={option}
-                      id={`option-${index}`}
-                      onChange={() => checkPasswordOptions(index)}
-                    />
-                    <label
-                      className='ml-4 capitalize'
-                      htmlFor={`option-${index}`}
-                    >
-                      Include {option}
-                    </label>
-                  </div>
-                )
-              })}
-              {!checkedState.includes(true) && (
-                <em className='text-red-500 font-light text-sm -mb-2'>
-                  select at least 1 option
-                </em>
-              )}
-            </div>
-            <div className='bg-primary h-16 px-4 mb-6 flex items-center'>
-              <p className='text-left uppercase text-gray-400'>Strength</p>
-              <div className='flex-1 flex items-center justify-end gap-2'>
-                <div className='uppercase text-lg md:mr-3'>
-                  {strength === 4
-                    ? 'strong'
-                    : strength === 0 || strength === 1
-                    ? 'weak'
-                    : 'medium'}
-                </div>
-                <div
-                  className={`border h-8 w-3 ${
-                    strength === 4
-                      ? colors.green
-                      : strength === 0 || strength === 1
-                      ? colors.red
-                      : colors.yellow
-                  }`}
-                />
-                <div
-                  className={`border h-8 w-3 ${
-                    strength === 4
-                      ? colors.green
-                      : strength === 0 || strength === 1
-                      ? colors.none
-                      : colors.yellow
-                  }`}
-                />
-                <div
-                  className={`border h-8 w-3 ${
-                    strength === 4
-                      ? colors.green
-                      : strength === 3
-                      ? colors.yellow
-                      : colors.none
-                  }`}
-                />
-                <div
-                  className={`border h-8 w-3 ${
-                    strength === 4 ? colors.green : colors.none
-                  }`}
-                />
-              </div>
-            </div>
-            <div>
-              <button
-                type='submit'
-                className='bg-accent flex justify-center items-center px-6 py-4 w-full active:text-accent active:bg-tertiary border-2 border-accent focus:ring-offset-0 focus:ring-opacity-40 focus:ring-accent focus:ring outline-none'
-              >
-                <span className='text-lg uppercase'>Generate</span>
-                <FiArrowRight className='w-6 h-6 ml-3' />
-              </button>
-            </div>
+            <Checkbox />
+            <PasswordStrength strength={strength} />
+            <GenerateButton />
           </form>
         </div>
       </div>
@@ -209,7 +109,7 @@ function App() {
         closeOnClick={true}
         toastStyle={{ background: '#24232b' }}
       />
-    </main>
+    </div>
   )
 }
 
