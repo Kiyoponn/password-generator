@@ -5,41 +5,41 @@
 @tailwind utilities;
 
 .SliderRoot {
-  @apply relative flex items-center select-none touch-none w-full
+  @apply relative flex items-center select-none touch-none w-full;
 }
 
 .SliderRoot[data-orientation='horizontal'] {
-  @apply h-5
+  @apply h-5;
 }
 
 .SliderRoot[data-orientation='vertical'] {
-  @apply flex-col w-5 h-[100px]
+  @apply flex-col w-5 h-[100px];
 }
 
 .SliderTrack {
-  @apply bg-primary relative flex-grow
+  @apply bg-primary relative flex-grow;
 }
 
 .SliderTrack[data-orientation='horizontal'] {
-  @apply h-2
+  @apply h-2;
 }
 
 .SliderTrack[data-orientation='vertical'] {
-  @apply w-2
+  @apply w-2;
 }
 
 .SliderRange {
-  @apply absolute bg-accent h-full
+  @apply absolute bg-accent h-full;
 }
 
 .SliderThumb {
-  @apply block w-6 h-6 bg-white border-2 border-white rounded-full cursor-pointer
+  @apply block w-6 h-6 bg-white border-2 border-white rounded-full cursor-pointer;
 }
 
 .SliderThumb:hover {
-  @apply bg-primary border-accent
+  @apply bg-primary border-accent;
 }
 
 .SliderThumb:focus {
-  @apply outline-none shadow-ring shadow-accent/50
+  @apply outline-none shadow-ring shadow-accent/50;
 }

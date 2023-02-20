@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { FiCopy } from 'react-icons/fi'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+
 import GenerateButton from './components/Button'
 import Slider, { useLengthStore } from './components/CharacterSlider'
 import Checkbox, { useCheckedStore } from './components/Checkbox'
