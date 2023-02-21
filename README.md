@@ -1,23 +1,17 @@
 # Password Generator
 
-A simple and fully responsive password generator app using:
+A simple and fully responsive password generator app using [React](https://beta.reactjs.org).
 
-- [vite](https://vitejs.dev)-[react](https://beta.reactjs.org/) with [typescript](https://www.typescriptlang.org)
-  - Vite is a modern JavaScript frontend development build tool that aims to be lightweight, fast, and simple to use.
-  - React is a JavaScript library for building user interfaces.
-  - TypeScript is JavaScript with syntax for types.
-- [tailwindcss](https://tailwindcss.com/)
-  - A utility-first CSS framework packed with classes.
-- [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
-  - React Toastify allows you to add notifications to your app with ease.
-- [react-icons](https://react-icons.github.io/react-icons)
-  - Include popular icons in your React projects easily.
-- [redix-ui](https://www.radix-ui.com/)
-  - An open-source UI component library for building high-quality, accessible design systems and web apps.
-- [zustand](https://zustand-demo.pmnd.rs/)
-  - Bear necessities for state management in react.
-- [github-pages](https://pages.github.com/)
-  - Websites for you and your projects.
+## ⚙️ Utilities
+
+- [Vite](https://vitejs.dev) for devlopment server and build.
+- [Typescript](https://www.typescriptlang.org) for static type checking.
+- [Tailwindcss](https://tailwindcss.com) for building custom UI by using pre-defined CSS classes.
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction) for toast notifications.
+- [React Icons](https://react-icons.github.io/react-icons) for icons in react.
+- [RedixUI](https://www.radix-ui.com) for creating accessible and modular UI components.
+- [Zustand](https://zustand-demo.pmnd.rs) for state management.
+- [Github Pages](https://pages.github.com) for deployment.
 
 ## 🎨 Design
 
@@ -27,14 +21,12 @@ Source: frontendmentor's [password generator app](https://www.frontendmentor.io/
 
 ```tree
 /
+├── .github/
+│   └── workflows
 ├── public/
-│   └── favicon.svg
 ├── src/
-│   ├── styles/
-│   │   └── index.css
-│   ├── App.tsx
-│   └── main.tsx
-├── index.html
+│   ├── components/
+│   └── styles/
 └── package.json
 ```
 
