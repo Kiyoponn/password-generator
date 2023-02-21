@@ -9,7 +9,7 @@
     "jsxSingleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5"
-  },  
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
