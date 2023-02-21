@@ -3,11 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },  
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "prettier": "prettier --write . --ignore-path .gitignore -u"
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,tsx,md}\""
   },
   "dependencies": {
     "@radix-ui/react-slider": "^1.1.0",
